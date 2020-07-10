@@ -1,0 +1,54 @@
+Estudo do NodeJs
+
+- O nodeJS é uma plataforma que utiliza a v8, engine de entendimento do JavaScript do 
+google chrome, no lado do back-end, para tratar de requisições e respostas do servidor, assim
+como acessar banco de dados como o SQL entre outros. 
+
+- Hoje existem basicamente dois tipos de aplicações existentes, uma delas é a full MVC, que
+é quando você cria sua parte visual da aplicação junto com o back-end. A outra é uma API 
+rest, que basicamente você separa as duas coisas(o back-end do front-end), a API rest forne-
+ce mais flexibilidade para lidar com o front-end e além disso permite trabalhar com uma úni-
+ca API para diferentes plataformas.
+
+- A extensão do express é um micro framework que vai ajudar a trabalharmos com rotas e 
+views, as rotas são os endereços url que o usuário vai acessar na api e as views são as for-
+mas de vizualização. 
+
+- Chamaremos o express para uma variável por meio da função 'require', chamaremos essa fun-
+ção retornada para outra variável, 'app' por exemplo e daremos um app.listen(3001), basica-
+mente estamos falando para nossa aplicação ouvir a porta 3001 do navegador.
+
+- podemos usar o app.get(), que irá receber como primeiro parâmetro a rota que o usuário
+irá acessar, nesse caso o localhost é simbolizado com uma '/' e o segundo parâmetro é uma 
+função que terá o 'req' e 'res' como parâmetro
+
+ex: app.get('/', (req, res) => {});
+
+- o parâmetro req simboliza a requisição que estamos fazendo ao servidor, do req nos podemos
+pegar da requisição parâmetros, corpo, cabeçalho, usuário, autenticação e etc. e o res tem
+haver com a resposta do servidor a essa requisição.
+
+- Uma ferramenta interessante para o desenvolvimento é o 'nodemon' que fará a função de 
+ficar monitorando os arquivos e atualizando automaticamente sem ter que reiniciar o servi-
+dor toda vez que for feito uma modificação. Para isso deve-se criar um novo script no ar-
+quivo packege.json, exemplo ("dev": "nodemon server.js") e roda-lo no terminal com o coman-
+do "npm run dev".
+
+- O docker é um software que permite fazer a cotainarização de recursos dentro da nossa ma-
+quina, que basicamente permite a instalação de programas dentro de uma maquina virtual linux
+sem alterar em nada nosso sistema principal, evitando ter que eventualmente formatar a ma-
+quina por algum conflito ou esquecimento de programas isntalados anteriormente.
+
+- instalamos o mongo e para subir um container do mongodb precisamos usar o comando:
+docker run --name mongodb -p 27017:27017 -d mongo
+
+- esse comando faz com que possamos dar um nome para o container, o '-p' significa que ire-
+mos redirecionar a porta, já que estará rodando em uma maquina virtual, precisamos fazer 
+esse redirecionamento e,o '-d' para poder escolhermos a imagem que iremos usar para esse
+container, no caso a imagem do mongo.
+
+- provavelmente quando reiniciarmos o pc, precisaremos subir o container novamente, mas não
+precisamos pra isso usar o comando de cima e sim um mais simples que é o: 
+docker start mongodb
+
+- 
