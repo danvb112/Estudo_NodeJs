@@ -51,4 +51,42 @@ container, no caso a imagem do mongo.
 precisamos pra isso usar o comando de cima e sim um mais simples que é o: 
 docker start mongodb
 
+- Para poder adicionar dados no banco de dados mongoose, precisamos criar um "Schema" que
+é como se fosse uma tabela num SQL, então daremos um mongoose.Schema em uma va-
+riável e passaremos um objeto com o que queremos, que será como se fossem as colunas do
+SQL.
+
+Ex: const productSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    url: {
+        type: String,
+        required: true
+    },
+    createAy: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+- depois daremos um mongoose.model(), passando o nome do model que queremos seguido do Schema
+criado. 
+
+- Para adicionar os dados em si, puxaremos esse model para uma variável especifica e daremos
+um create nela, passando especificamente os dados que queremos dentro do banco de dados.
+
+ex:.
+const product = mongoose.model("Product");
+product.create({
+        title: "React Native",
+        description: "Build native apps with react",
+        url: "http://github.com/facebook/react-native"
+    })
+
 - 
