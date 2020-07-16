@@ -89,4 +89,34 @@ product.create({
         url: "http://github.com/facebook/react-native"
     })
 
+- Para podermos criar um registro no nosso banco de dados, precisamos criar uma função den-
+tro do nosso controller que permita fazer isso que será:
+
+async store(req, res){
+        const product = await Product.create(req.body);
+        return res.json(product);
+    }
+
+- Mas para que a função store() possa funcionar precisamos adicionar o método POST, que ser-
+ver para enviarmos as requisições para o servidor, dentro do nosso arquivo routes.js. Então
+iremos criar uma nova rota com o método post e passaremos a parte da ulr que ela será enviada
+e passaremos a função store() do nosso controlador.
+
+routes.post('/products', productController.store);
+
+- Adicionamos as funções de atualizar, mostrar um único registro e deletar, para isso cria-
+mos novos métodos e novas rotas. A diferença é que como queremos um único registro especifico
+precisamos dizer isso ao programa, existem funções do express que permite fazer isso, são
+elas a 'findById', 'findbyIdAndUpdate", 'findByIdAndRemove'. Na função de mostrar um único
+registro e na de deletar, precisamos passar somente o id que pode ser obtido com um 
+'req.params.id'. já na função de atualizar, além do id precisamos passar o corpo com as par
+tes que serão atualizadas e um objeto com a propriedade new: { new: true }, esse objeto vai
+fazer com que seja retornado o registro atualizado, caso não coloquemos, o registro retor-
+nado vai ser o antes de ser atualizado.
+
+- Nas rotas que serão especificadas o id, o express identifica automaticamente quando colo-
+camos logo apos o caminho que desejamos um '/:id'. ex:
+
+routes.put('/products/:id', productController.update);
+
 - 
