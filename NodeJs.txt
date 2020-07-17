@@ -119,4 +119,14 @@ camos logo apos o caminho que desejamos um '/:id'. ex:
 
 routes.put('/products/:id', productController.update);
 
+- Para poder adicionar paginação na nossa busca da função index, adicionamos um plugin cha-
+mado mongoose-paginate, e chamamaos ele por meio de um require(). Na função index criamos
+uma variável por meio de desestruturação "{page = 1} = req.query". Depois criamos uma outra
+variável pra podermos chamar o paginate passando dois paramêtros dentro do paginate, o 
+primeiro é um objeto que podemos colocar as condições da paginação e o segundo é a página 
+atual em que estamos e o limite de itens por pagina.
+
+-  Lembrando que o req.body é para o corpo da requisição, o req.params é para os id das rotas
+e o req.query é para parâmetros GET.
+
 - 
